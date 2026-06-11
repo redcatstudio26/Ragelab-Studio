@@ -1184,35 +1184,24 @@
       opacity: 1;
     }
 
+    /* ============================================================
+       RESPONSIVE
+       ============================================================ */
+
+    /* tablet / small laptop */
     @media (max-width: 1000px) {
       .steps {
         grid-template-columns: repeat(2, 1fr);
       }
 
-      .packages {
-        grid-template-columns: repeat(2, 1fr);
-      }
-      .packages {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
       .book__grid {
         grid-template-columns: 1fr;
+        gap: 2.4rem;
       }
     }
 
-    @media (max-width: 600px) {
-
-      .packages {
-        grid-template-columns: 1fr;
-      }
-
-      .form__row {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width:820px) {
+    /* story stacks to a single column; figure fades back */
+    @media (max-width: 820px) {
       .story {
         min-height: auto;
       }
@@ -1220,37 +1209,74 @@
       .story__inner {
         grid-template-columns: 1fr;
         width: min(1180px, 92vw);
-        padding-right: 0;
-        gap: 2.2rem;
+        gap: 2rem;
+        /* drop the desktop left/right indent so it's centered on mobile */
+        padding: clamp(3rem, 8vw, 5rem) 0;
+      }
+
+      .story__body {
+        max-width: 60ch;
       }
 
       .story__bg {
-        opacity: .25;
+        opacity: .2;
       }
     }
 
-    @media (max-width:720px) {
+    /* phones */
+    @media (max-width: 720px) {
       .hero {
-        padding: 18vw 5vw 0
+        padding: 6vw 5vw 0;
       }
 
       .tagline {
         font-size: .62rem;
-        letter-spacing: .12em
+        letter-spacing: .12em;
       }
 
       nav.thumbs {
-        grid-template-columns: repeat(2, 1fr)
+        grid-template-columns: repeat(2, 1fr);
       }
 
       .thumb:last-child {
-        grid-column: 1/-1
+        grid-column: 1 / -1;
+      }
+
+      /* keep the giant ghost numbers as faint texture, not clutter */
+      .story__ghost {
+        font-size: clamp(7rem, 34vw, 13rem);
+        opacity: .04;
+      }
+
+      .story__ghost--right {
+        right: .4rem;
+      }
+    }
+
+    /* small phones */
+    @media (max-width: 560px) {
+      .heroes {
+        /* scale the title fully down so it never overflows narrow screens */
+        font-size: clamp(3rem, 23vw, 8rem);
+      }
+
+      .form__row,
+      .modal__row {
+        grid-template-columns: 1fr;
+      }
+
+      .info__socials {
+        flex-wrap: wrap;
+      }
+
+      .addons {
+        gap: 1.2rem 1.6rem;
       }
     }
 
     @media (prefers-reduced-motion:reduce) {
       * {
-        transition: none !important
+        transition: none !important;
       }
     }
   </style>
