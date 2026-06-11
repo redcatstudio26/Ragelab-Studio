@@ -26,7 +26,10 @@
 
     html,
     body {
-      height: 100%
+      height: 100%;
+      /* stop the carousel's off-screen cards from creating horizontal scroll */
+      overflow-x: clip;
+      max-width: 100%;
     }
 
     body {
@@ -34,7 +37,7 @@
       color: var(--white);
       font-family: 'Oswald', sans-serif;
       min-height: 100vh;
-      overflow-x: hidden;
+      overflow-x: clip;
       position: relative;
     }
 
@@ -1225,8 +1228,29 @@
 
     /* phones */
     @media (max-width: 720px) {
+      /* hero flows as a clean vertical stack instead of overlapping absolute
+         layers (which collided with the thumbnails below) */
       .hero {
-        padding: 6vw 5vw 0;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 9vw 5vw;
+      }
+
+      .stack {
+        transform: none;
+        /* reserve room below the title for the absolute signature */
+        margin-bottom: clamp(4rem, 14vw, 5.5rem);
+      }
+
+      .intro {
+        position: static;
+        transform: none;
+        margin: 0 auto;
+      }
+
+      .intro__cta {
+        white-space: nowrap;
       }
 
       .tagline {
