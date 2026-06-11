@@ -662,7 +662,6 @@
     /* ===== coverflow selection carousel ===== */
     .coverflow {
       position: relative;
-      perspective: 1800px;
       margin-top: clamp(1rem, 3vw, 2rem);
       padding: 1.5rem 0 .5rem;
     }
@@ -684,14 +683,13 @@
     .cf-stage {
       position: relative;
       height: 560px;
-      transform-style: preserve-3d;
     }
 
     .coverflow .pack {
       position: absolute;
       top: 50%;
       left: 50%;
-      width: min(300px, 74vw);
+      width: min(350px, 66vw);
       margin: 0;
       transform: translate(-50%, -50%);
       transition: transform .55s cubic-bezier(.22, .61, .36, 1), opacity .45s ease, filter .45s ease;
@@ -1733,7 +1731,7 @@
           else { scale = .72; ry = -sign * 30; tz = -300; opacity = 0; bright = .4; z = 1; }
 
           card.style.transform =
-            `translate(-50%,-50%) translateX(${o * gap}px) translateZ(${tz}px) rotateY(${ry}deg) scale(${scale})`;
+            `translate(-50%,-50%) perspective(1800px) translateX(${o * gap}px) translateZ(${tz}px) rotateY(${ry}deg) scale(${scale})`;
           card.style.opacity = opacity;
           card.style.filter = `brightness(${bright})`;
           card.style.zIndex = z;
