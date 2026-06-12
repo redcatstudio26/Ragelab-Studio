@@ -168,7 +168,7 @@
           rgba(10, 8, 8, .60) 0%,
           rgba(10, 8, 8, .30) 45%,
           rgba(10, 8, 8, .90) 100%),
-        url('hero-bg.png') center 45% / cover no-repeat;
+        url('hero-bg.webp') center 45% / cover no-repeat;
     }
 
     .stack {
@@ -401,7 +401,7 @@
       position: relative;
       min-height: 100vh;
       overflow: hidden;
-      background: var(--bg);
+      background: #0a080800;
       display: flex;
       align-items: center;
     }
@@ -412,7 +412,10 @@
       z-index: 0;
       pointer-events: none;
       opacity: .7;
-      background: url('works-bg.png') 10% center / auto 120% no-repeat;
+      /* image applied lazily via IntersectionObserver (see [data-bg]) */
+      background-position: 10% center;
+      background-size: auto 120%;
+      background-repeat: no-repeat;
       -webkit-mask-image: linear-gradient(90deg, transparent 32%, #000 86%);
       mask-image: linear-gradient(90deg, transparent 32%, #000 86%);
     }
@@ -657,13 +660,13 @@
     .pack--photo {
       background:
         linear-gradient(180deg, rgba(10, 8, 8, .8), rgba(10, 8, 8, .92)),
-        var(--pack-img) center / cover no-repeat;
+        var(--pack-img, none) center / cover no-repeat;
     }
 
     .pack--photo:hover {
       background:
         linear-gradient(180deg, rgba(10, 8, 8, .72), rgba(10, 8, 8, .88)),
-        var(--pack-img) center / cover no-repeat;
+        var(--pack-img, none) center / cover no-repeat;
     }
 
     .pack__people {
@@ -1528,6 +1531,8 @@
     @media (max-width: 1000px) {
       .steps {
         grid-template-columns: repeat(2, 1fr);
+        row-gap: 3.5rem;
+        margin-top: 4.5rem;
       }
 
       .book__grid {
@@ -1623,6 +1628,54 @@
         opacity: .04;
       }
 
+      /* shrink carousel cards so they fit better on phones */
+      .coverflow .pack {
+        padding: 1.2rem 1rem;
+      }
+
+      .coverflow .pack__people svg {
+        width: 18px;
+        height: 18px;
+      }
+
+      .coverflow .pack__name {
+        font-size: 1.5rem;
+      }
+
+      .coverflow .pack__name b {
+        font-size: 0.95rem;
+      }
+
+      .coverflow .pack__tiers {
+        margin: .8rem 0 1rem;
+      }
+
+      .coverflow .pack__tiers li {
+        padding-bottom: .4rem;
+        font-size: .9rem;
+      }
+
+      .coverflow .pack__tiers b {
+        font-size: 1.05rem;
+      }
+
+      .coverflow .pack__inc {
+        font-size: .65rem;
+      }
+
+      .coverflow .pack__list {
+        margin-bottom: 1rem;
+      }
+
+      .coverflow .pack__list li {
+        font-size: .85rem;
+      }
+
+      .coverflow .pack .btn {
+        padding: .7em 1.2em;
+        font-size: .75rem;
+      }
+
       .story__ghost--right {
         right: .4rem;
       }
@@ -1663,7 +1716,7 @@
             rgba(10, 8, 8, .60) 0%,
             rgba(10, 8, 8, .30) 45%,
             rgba(10, 8, 8, .90) 100%),
-          url('hero-bg.png') center 82% / auto 125% no-repeat;
+          url('hero-bg.webp') center 82% / auto 125% no-repeat;
       }
 
       /* nudge the story background left on tablets */
@@ -1736,7 +1789,7 @@
   </header>
 
   <div class="screen">
-    <main class="hero">
+    <main class="hero" id="hero">
       <div class="stack">
         <h1 class="heroes" aria-label="We turn brands into Heroes">RAGELAB</h1>
         <div class="tagline" aria-hidden="true">
@@ -1757,24 +1810,24 @@
     </main>
 
     <nav class="thumbs" aria-label="Sections">
-      <a class="thumb" href="#smash"><span class="media" style="background-image:url('smash-nav.png')"></span><span
+      <a class="thumb" href="#hero"><span class="media" style="background-image:url('smash-nav.webp')"></span><span
           class="label">SMASH</span></a>
-      <a class="thumb" href="#rooms"><span class="media" style="background-image:url('room-nav.png')"></span><span
-          class="label">THE ROOMS</span></a>
-      <a class="thumb" href="#how"><span class="media" style="background-image:url('works-nav.png')"></span><span
+      <a class="thumb" href="#story"><span class="media" style="background-image:url('room-nav.webp')"></span><span
+          class="label">THE CONCEPT</span></a>
+      <a class="thumb" href="#how"><span class="media" style="background-image:url('works-nav.webp')"></span><span
           class="label">HOW IT WORKS</span></a>
-      <a class="thumb" href="#damage"><span class="media" style="background-image:url('damage-nav.png')"></span><span
-          class="label">DAMAGE</span></a>
-      <a class="thumb" href="#book"><span class="media" style="background-image:url('book-nav.png')"></span><span
+      <a class="thumb" href="#damage"><span class="media" style="background-image:url('damage-nav.webp')"></span><span
           class="label">BOOK</span></a>
+      <a class="thumb" href="#faq"><span class="media" style="background-image:url('book-nav.webp')"></span><span
+          class="label">FAQ</span></a>
     </nav>
   </div>
 
   <!-- ===== How It Works (story) ===== -->
   <section class="story" id="story">
-    <div class="story__bg"></div>
+    <div class="story__bg" data-bg="works-bg.webp"></div>
     <span class="story__ghost" aria-hidden="true">01</span>
-    <div class="story__inner">
+    <div class="story__inner" id="concept">
       <div class="story__head">
         <span class="story__eyebrow">What is this place</span>
         <h2 class="story__title">WHAT IS<br><b>RAGELAB</b></h2>
@@ -1809,7 +1862,7 @@
       <div class="steps">
         <article class="step step--floating-img">
           <div class="step__img-wrap step__img-wrap--float">
-            <img class="step__img" src="phone.png" alt="" aria-hidden="true">
+            <img class="step__img" src="phone.webp" alt="" aria-hidden="true" loading="lazy" decoding="async">
             <span class="step__img-glow" aria-hidden="true"></span>
             <span class="step__img-shadow" aria-hidden="true"></span>
           </div>
@@ -1821,7 +1874,7 @@
         </article>
         <article class="step step--floating-img">
           <div class="step__img-wrap step__img-wrap--float">
-            <img class="step__img" src="helmet.png" alt="" aria-hidden="true">
+            <img class="step__img" src="helmet.webp" alt="" aria-hidden="true" loading="lazy" decoding="async">
             <span class="step__img-glow" aria-hidden="true"></span>
             <span class="step__img-shadow" aria-hidden="true"></span>
           </div>
@@ -1833,7 +1886,7 @@
         </article>
         <article class="step step--floating-img">
           <div class="step__img-wrap step__img-wrap--float">
-            <img class="step__img" src="bat.png" alt="" aria-hidden="true">
+            <img class="step__img" src="bat.webp" alt="" aria-hidden="true" loading="lazy" decoding="async">
             <span class="step__img-glow" aria-hidden="true"></span>
             <span class="step__img-shadow" aria-hidden="true"></span>
           </div>
@@ -1845,7 +1898,7 @@
         </article>
         <article class="step step--floating-img">
           <div class="step__img-wrap step__img-wrap--float">
-            <img class="step__img" src="hell.png" alt="" aria-hidden="true">
+            <img class="step__img" src="hell.webp" alt="" aria-hidden="true" loading="lazy" decoding="async">
             <span class="step__img-glow" aria-hidden="true"></span>
             <span class="step__img-shadow" aria-hidden="true"></span>
           </div>
@@ -1875,7 +1928,7 @@
       <div class="coverflow" id="packCoverflow">
         <div class="cf-stage">
           <!-- 1 PAX -->
-        <article class="pack pack--photo" style="--pack-img: url('first-pack.png')">
+        <article class="pack pack--photo" data-pack-img="first-pack.webp">
           <div class="pack__people" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 12.5a4.25 4.25 0 1 0 0-8.5 4.25 4.25 0 0 0 0 8.5Zm0 1.6c-4.4 0-8 2.4-8 5.4V21h16v-1.5c0-3-3.6-5.4-8-5.4Z"/></svg>
           </div>
@@ -1897,7 +1950,7 @@
         </article>
 
         <!-- 2 PAX -->
-        <article class="pack pack--photo" style="--pack-img: url('second-pack.png')">
+        <article class="pack pack--photo" data-pack-img="second-pack.webp">
           <div class="pack__people" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 12.5a4.25 4.25 0 1 0 0-8.5 4.25 4.25 0 0 0 0 8.5Zm0 1.6c-4.4 0-8 2.4-8 5.4V21h16v-1.5c0-3-3.6-5.4-8-5.4Z"/></svg>
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 12.5a4.25 4.25 0 1 0 0-8.5 4.25 4.25 0 0 0 0 8.5Zm0 1.6c-4.4 0-8 2.4-8 5.4V21h16v-1.5c0-3-3.6-5.4-8-5.4Z"/></svg>
@@ -1920,7 +1973,7 @@
         </article>
 
         <!-- 3 PAX -->
-        <article class="pack pack--photo" style="--pack-img: url('third-pack.png')">
+        <article class="pack pack--photo" data-pack-img="third-pack.webp">
           <div class="pack__people" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 12.5a4.25 4.25 0 1 0 0-8.5 4.25 4.25 0 0 0 0 8.5Zm0 1.6c-4.4 0-8 2.4-8 5.4V21h16v-1.5c0-3-3.6-5.4-8-5.4Z"/></svg>
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 12.5a4.25 4.25 0 1 0 0-8.5 4.25 4.25 0 0 0 0 8.5Zm0 1.6c-4.4 0-8 2.4-8 5.4V21h16v-1.5c0-3-3.6-5.4-8-5.4Z"/></svg>
@@ -1944,7 +1997,7 @@
         </article>
 
         <!-- 4 PAX -->
-        <article class="pack pack--photo" style="--pack-img: url('fourth-pack.png')">
+        <article class="pack pack--photo" data-pack-img="fourth-pack.webp">
           <div class="pack__people" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 12.5a4.25 4.25 0 1 0 0-8.5 4.25 4.25 0 0 0 0 8.5Zm0 1.6c-4.4 0-8 2.4-8 5.4V21h16v-1.5c0-3-3.6-5.4-8-5.4Z"/></svg>
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 12.5a4.25 4.25 0 1 0 0-8.5 4.25 4.25 0 0 0 0 8.5Zm0 1.6c-4.4 0-8 2.4-8 5.4V21h16v-1.5c0-3-3.6-5.4-8-5.4Z"/></svg>
@@ -2053,7 +2106,7 @@
   </section>
 
   <!-- ===== FOOTER ===== -->
-  <footer class="site-footer">
+  <footer class="site-footer" id="contact">
     <div class="footer-grid">
       <div class="footer-brand">
         <a class="footer-logo" href="#">RAGELAB</a>
@@ -2347,6 +2400,32 @@
       });
     })();
   </script>
+
+  <!-- lazy-load below-the-fold background images -->
+  <script>
+    (function () {
+      var els = document.querySelectorAll('[data-bg],[data-pack-img]');
+      if (!els.length) return;
+      function load(el) {
+        if (el.dataset.bg) {
+          el.style.backgroundImage = "url('" + el.dataset.bg + "')";
+          el.removeAttribute('data-bg');
+        }
+        if (el.dataset.packImg) {
+          el.style.setProperty('--pack-img', "url('" + el.dataset.packImg + "')");
+          el.removeAttribute('data-pack-img');
+        }
+      }
+      if (!('IntersectionObserver' in window)) { els.forEach(load); return; }
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) { load(e.target); io.unobserve(e.target); }
+        });
+      }, { rootMargin: '400px 0px' });
+      els.forEach(function (el) { io.observe(el); });
+    })();
+  </script>
+
 
 </body>
 
