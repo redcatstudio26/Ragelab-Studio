@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://redcatstudio26.github.io/Ragelab-Studio/sitemap.xml
