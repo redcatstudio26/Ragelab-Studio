@@ -5,6 +5,27 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>RageLab Studio</title>
+  <meta name="description" content="RageLab Studio — a smash room in KL where you can break, scream, and reset. Walk-ins welcome, or book your slot on WhatsApp.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://ragelab.studio/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="RageLab Studio">
+  <meta property="og:description" content="A controlled space for total, glorious destruction. Walk in or book a session and smash your stress away.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ragelab.studio/">
+  <meta property="og:image" content="https://ragelab.studio/hero-bg.webp">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="RageLab Studio">
+  <meta name="twitter:description" content="A controlled space for total, glorious destruction. Walk in or book a session and smash your stress away.">
+  <meta name="twitter:image" content="https://ragelab.studio/hero-bg.webp">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -22,6 +43,61 @@
     .brand-lab {
       color: var(--red);
     }
+
+    /* skip-to-content link for keyboard users */
+    .skip-link {
+      position: absolute;
+      top: -100%;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 100;
+      background: var(--red);
+      color: #f4f1ec;
+      padding: .75rem 1.25rem;
+      font-family: 'Oswald', sans-serif;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      text-decoration: none;
+      border-radius: 0 0 8px 8px;
+      transition: top .2s ease;
+    }
+
+    .skip-link:focus {
+      top: 0;
+    }
+
+    /* utility classes to replace inline styles */
+    .wrap--relative {
+      position: relative;
+      z-index: 2;
+    }
+
+    .text-muted {
+      color: var(--muted);
+    }
+
+    .footer-brand__desc {
+      color: var(--muted);
+      max-width: 34ch;
+      margin-top: 1rem;
+      line-height: 1.7;
+    }
+
+    .footer-col__detail {
+      color: var(--muted);
+    }
+
+    .btn--mt {
+      margin-top: 1rem;
+    }
+
+    /* thumbnail background images */
+    .thumb--smash .media { background-image: url('smash-nav.webp'); }
+    .thumb--room .media { background-image: url('room-nav.webp'); }
+    .thumb--works .media { background-image: url('works-nav.webp'); }
+    .thumb--damage .media { background-image: url('damage-nav.webp'); }
+    .thumb--faq .media { background-image: url('book-nav.webp'); }
 
     * {
       margin: 0;
@@ -57,7 +133,7 @@
           rgba(10, 8, 8, .40) 0%,
           rgba(10, 8, 8, .15) 40%,
           rgba(244, 241, 236, .95) 100%),
-        url('hero-bg.png') center 45% / cover no-repeat;
+        url('hero-bg.webp') center 45% / cover no-repeat;
     }
 
     /* ---------- mobile top navbar (phones only; hidden on tablet/desktop) ---------- */
@@ -1771,7 +1847,7 @@
             rgba(10, 8, 8, .60) 0%,
             rgba(10, 8, 8, .30) 45%,
             rgba(10, 8, 8, .90) 100%),
-          url('hero-bg.png') center 82% / auto 125% no-repeat;
+          url('hero-bg.webp') center 82% / auto 125% no-repeat;
       }
 
       /* nudge the story background left on tablets */
@@ -1897,6 +1973,8 @@
 
 <body>
 
+  <a class="skip-link" href="#hero">Skip to content</a>
+
   <!-- Mobile top navbar (phones only) -->
   <header class="topnav" id="topnav">
     <a class="topnav__brand" href="#"><span class="topnav__dot" aria-hidden="true"></span>RAGE<span class="brand-lab">LAB</span></a>
@@ -1933,22 +2011,22 @@
     </main>
 
     <nav class="thumbs" aria-label="Sections">
-      <a class="thumb" href="#hero"><span class="media" style="background-image:url('smash-nav.webp')"></span><span
+      <a class="thumb thumb--smash" href="#hero"><span class="media"></span><span
           class="label">SMASH</span></a>
-      <a class="thumb" href="#story"><span class="media" style="background-image:url('room-nav.webp')"></span><span
+      <a class="thumb thumb--room" href="#story"><span class="media"></span><span
           class="label">THE CONCEPT</span></a>
-      <a class="thumb" href="#how"><span class="media" style="background-image:url('works-nav.webp')"></span><span
+      <a class="thumb thumb--works" href="#how"><span class="media"></span><span
           class="label">HOW IT WORKS</span></a>
-      <a class="thumb" href="#damage"><span class="media" style="background-image:url('damage-nav.webp')"></span><span
+      <a class="thumb thumb--damage" href="#damage"><span class="media"></span><span
           class="label">BOOK</span></a>
-      <a class="thumb" href="#faq"><span class="media" style="background-image:url('book-nav.webp')"></span><span
+      <a class="thumb thumb--faq" href="#faq"><span class="media"></span><span
           class="label">FAQ</span></a>
     </nav>
   </div>
 
   <!-- ===== How It Works (story) ===== -->
   <section class="story" id="story">
-    <div class="story__bg" data-bg="works-bg.png"></div>
+    <div class="story__bg" data-bg="works-bg.webp"></div>
     <span class="story__ghost" aria-hidden="true">01</span>
     <div class="story__inner" id="concept">
       <div class="story__head">
@@ -1977,7 +2055,7 @@
   <section class="section how" id="how">
     <span class="story__ghost story__ghost--center" aria-hidden="true">02</span>
     <p class="how__walkin">Walk In Now Available</p>
-    <div class="wrap" style="position:relative;z-index:2">
+    <div class="wrap wrap--relative">
       <div class="sec-head">
         <span class="eyebrow">From booking to rubble</span>
         <h2 class="sec-title">HOW IT <b>WORKS</b></h2>
@@ -1986,7 +2064,7 @@
       <div class="steps">
         <article class="step step--floating-img">
           <div class="step__img-wrap step__img-wrap--float">
-            <img class="step__img" src="phone.webp" alt="" aria-hidden="true" loading="lazy" decoding="async">
+            <img class="step__img" src="phone.webp" alt="" width="700" height="1356" aria-hidden="true" loading="lazy" decoding="async">
             <span class="step__img-glow" aria-hidden="true"></span>
             <span class="step__img-shadow" aria-hidden="true"></span>
           </div>
@@ -1998,7 +2076,7 @@
         </article>
         <article class="step step--floating-img">
           <div class="step__img-wrap step__img-wrap--float">
-            <img class="step__img" src="helmet.webp" alt="" aria-hidden="true" loading="lazy" decoding="async">
+            <img class="step__img" src="helmet.webp" alt="" width="700" height="886" aria-hidden="true" loading="lazy" decoding="async">
             <span class="step__img-glow" aria-hidden="true"></span>
             <span class="step__img-shadow" aria-hidden="true"></span>
           </div>
@@ -2010,7 +2088,7 @@
         </article>
         <article class="step step--floating-img">
           <div class="step__img-wrap step__img-wrap--float">
-            <img class="step__img" src="bat.webp" alt="" aria-hidden="true" loading="lazy" decoding="async">
+            <img class="step__img" src="bat.webp" alt="" width="700" height="694" aria-hidden="true" loading="lazy" decoding="async">
             <span class="step__img-glow" aria-hidden="true"></span>
             <span class="step__img-shadow" aria-hidden="true"></span>
           </div>
@@ -2022,7 +2100,7 @@
         </article>
         <article class="step step--floating-img">
           <div class="step__img-wrap step__img-wrap--float">
-            <img class="step__img" src="hell.webp" alt="" aria-hidden="true" loading="lazy" decoding="async">
+            <img class="step__img" src="hell.webp" alt="" width="700" height="676" aria-hidden="true" loading="lazy" decoding="async">
             <span class="step__img-glow" aria-hidden="true"></span>
             <span class="step__img-shadow" aria-hidden="true"></span>
           </div>
@@ -2039,7 +2117,7 @@
   <!-- ===== PRICING / DAMAGE ===== -->
   <section class="section pricing" id="damage">
     <span class="story__ghost story__ghost--right" aria-hidden="true">03</span>
-    <div class="wrap" style="position:relative;z-index:2">
+    <div class="wrap wrap--relative">
       <div class="sec-head">
         <span class="eyebrow">What's the damage</span>
         <h2 class="sec-title">PICK YOUR <b>POISON</b></h2>
@@ -2052,7 +2130,7 @@
       <div class="coverflow" id="packCoverflow">
         <div class="cf-stage">
           <!-- 1 PAX -->
-        <article class="pack pack--photo" data-pack-img="first-pack.png">
+        <article class="pack pack--photo" data-pack-img="first-pack.webp">
           <div class="pack__people" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 12.5a4.25 4.25 0 1 0 0-8.5 4.25 4.25 0 0 0 0 8.5Zm0 1.6c-4.4 0-8 2.4-8 5.4V21h16v-1.5c0-3-3.6-5.4-8-5.4Z"/></svg>
           </div>
@@ -2074,7 +2152,7 @@
         </article>
 
         <!-- 2 PAX -->
-        <article class="pack pack--photo" data-pack-img="second-pack.png">
+        <article class="pack pack--photo" data-pack-img="second-pack.webp">
           <div class="pack__people" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 12.5a4.25 4.25 0 1 0 0-8.5 4.25 4.25 0 0 0 0 8.5Zm0 1.6c-4.4 0-8 2.4-8 5.4V21h16v-1.5c0-3-3.6-5.4-8-5.4Z"/></svg>
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 12.5a4.25 4.25 0 1 0 0-8.5 4.25 4.25 0 0 0 0 8.5Zm0 1.6c-4.4 0-8 2.4-8 5.4V21h16v-1.5c0-3-3.6-5.4-8-5.4Z"/></svg>
@@ -2097,7 +2175,7 @@
         </article>
 
         <!-- 3 PAX -->
-        <article class="pack pack--photo" data-pack-img="third-pack.png ">
+        <article class="pack pack--photo" data-pack-img="third-pack.webp">
           <div class="pack__people" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 12.5a4.25 4.25 0 1 0 0-8.5 4.25 4.25 0 0 0 0 8.5Zm0 1.6c-4.4 0-8 2.4-8 5.4V21h16v-1.5c0-3-3.6-5.4-8-5.4Z"/></svg>
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 12.5a4.25 4.25 0 1 0 0-8.5 4.25 4.25 0 0 0 0 8.5Zm0 1.6c-4.4 0-8 2.4-8 5.4V21h16v-1.5c0-3-3.6-5.4-8-5.4Z"/></svg>
@@ -2121,7 +2199,7 @@
         </article>
 
         <!-- 4 PAX -->
-        <article class="pack pack--photo" data-pack-img="fourth-pack.png">
+        <article class="pack pack--photo" data-pack-img="fourth-pack.webp">
           <div class="pack__people" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 12.5a4.25 4.25 0 1 0 0-8.5 4.25 4.25 0 0 0 0 8.5Zm0 1.6c-4.4 0-8 2.4-8 5.4V21h16v-1.5c0-3-3.6-5.4-8-5.4Z"/></svg>
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 12.5a4.25 4.25 0 1 0 0-8.5 4.25 4.25 0 0 0 0 8.5Zm0 1.6c-4.4 0-8 2.4-8 5.4V21h16v-1.5c0-3-3.6-5.4-8-5.4Z"/></svg>
@@ -2154,7 +2232,7 @@
       <div class="addons">
         <h3 class="addons__title">Add-Ons</h3>
         <div class="addon">
-          <h4>Basic Entry <span style="color:#6b6b6b">(per person)</span></h4>
+          <h4>Basic Entry <span class="text-muted">(per person)</span></h4>
           <p>15 min — <b>RM20</b><br>20 min — <b>RM30</b><br>25 min — <b>RM35</b></p>
         </div>
         <div class="addon">
@@ -2241,7 +2319,7 @@
     <div class="footer-grid">
       <div class="footer-brand">
         <a class="footer-logo" href="#">RAGE<span class="brand-lab">LAB</span></a>
-        <p style="color:var(--muted);max-width:34ch;margin-top:1rem;line-height:1.7">
+        <p class="footer-brand__desc">
           A controlled space for total, glorious destruction. Bring the rage &mdash; we'll bring the
           rubble.
         </p>
@@ -2263,10 +2341,10 @@
         <h4>Get In Touch</h4>
         <ul>
           <li><a href="tel:+601161556099">+6011 6155 6099</a></li>
-          <li style="color:var(--muted)">@ragelabelemen</li>
-          <li style="color:var(--muted)"><strong>Mon</strong> &mdash; by appointment</li>
-          <li style="color:var(--muted)"><strong>Tue &ndash; Fri</strong> &mdash; 12PM &ndash; 10PM (walk-in &amp; booking)</li>
-          <li style="color:var(--muted)"><strong>Weekends / PH</strong> &mdash; 12PM &ndash; 11PM (walk-in &amp; booking)</li>
+          <li class="footer-col__detail">@ragelabelemen</li>
+          <li class="footer-col__detail"><strong>Mon</strong> &mdash; by appointment</li>
+          <li class="footer-col__detail"><strong>Tue &ndash; Fri</strong> &mdash; 12PM &ndash; 10PM (walk-in &amp; booking)</li>
+          <li class="footer-col__detail"><strong>Weekends / PH</strong> &mdash; 12PM &ndash; 11PM (walk-in &amp; booking)</li>
         </ul>
       </div>
     </div>
@@ -2329,7 +2407,7 @@
           <span>Confirm on WhatsApp</span>
         </a>
         <p class="modal__note">If you don't confirm within 10 minutes, we'll follow up with you.</p>
-        <button class="btn btn--secondary" type="button" data-close style="margin-top:1rem">Close</button>
+        <button class="btn btn--secondary btn--mt" type="button" data-close>Close</button>
       </div>
     </div>
   </div>
