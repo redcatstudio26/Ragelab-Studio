@@ -1874,8 +1874,8 @@
 
     /* ---------- tablets / iPad: bigger hero intro + thumbnails ---------- */
     @media (min-width: 721px) and (max-width: 1180px) {
-      /* shift the hero photo up — scale past cover so there's vertical room to move it */
-      .hero {
+      /* shift the hero photo up and extend it behind the thumbnail bar */
+      .screen {
         background:
           linear-gradient(180deg,
             rgba(10, 8, 8, .60) 0%,
@@ -1994,27 +1994,6 @@
       .intro__cta {
         font-size: .95rem;
         padding: .85em 1.9em;
-      }
-    }
-
-    /* portrait tablets (iPad Air/Pro): let the hero background flow behind the thumbnails */
-    @media (min-width: 721px) and (max-width: 1024px) and (orientation: portrait) {
-      nav.thumbs {
-        background: transparent;
-        padding-inline: clamp(20px, 3vw, 40px);
-      }
-
-      .thumb {
-        background: transparent;
-      }
-
-      .thumb .media {
-        background-image: none !important;
-        opacity: 0;
-      }
-
-      .thumb::before {
-        background: linear-gradient(180deg, rgba(0, 0, 0, .2), rgba(0, 0, 0, .55));
       }
     }
 
